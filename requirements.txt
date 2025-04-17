@@ -1,0 +1,11 @@
+streamlit
+langchain==0.1.14
+langgraph
+openai
+tenseal
+fastapi
+uvicorn
+pandas
+requests
+python-dotenv
+langchain-openai
