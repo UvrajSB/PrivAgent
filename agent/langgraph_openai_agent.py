@@ -3,7 +3,7 @@ from langgraph.graph import MessagesState
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langgraph.graph import StateGraph, START, END
 from langgraph.prebuilt import tools_condition, ToolNode
-from agent_tools import add, decryption, encryption
+from agent_tools import decryption, encryption
 from utils.context_manager import init_context
 
 init_context()
@@ -34,8 +34,12 @@ builder.add_edge("tools", "assistant")
 # Compiling graph
 react_graph = builder.compile()
 
+"""
+Can you encrypt this list of numbers [1,3,56] using your tools and stored it in a file
+Can you decrypt the list of encrypted numbers using your tools which are stored in the file `data/encrypted_data.txt`
+"""
 # Agent
-messages = [HumanMessage(content="Can you decrypt the list of encrypted numbers using your tools which are stored in encrypted_data/encrypted_vector.txt")]
+messages = [HumanMessage(content="Can you decrypt the list of encrypted numbers using your tools which are stored in the file `data/encrypted_data.txt`")]
 messages = react_graph.invoke({"messages":messages})
 
 for m in messages['messages']:

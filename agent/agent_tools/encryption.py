@@ -18,14 +18,11 @@ def list_encryption(l:list)-> str:
     """
     context = get_context()
     if context:
-        encoded_string = serialize_bfvvector(ts.bfv_vector(context, l))
-        result = deserialize_bfvvector(encoded_string, context)
-        # print(f"Called encryption with input: {l}")
-        # file_path = "encrypted_data/encrypted_vector.txt"
-        # os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        # with open(file_path, "w") as f:
-        #     f.write(serialize_bfvvector(ts.bfv_vector(context, l)))
-        # return file_path
-        return result
+        print(f"Called encryption with input: {l}")
+        file_path = "data/encrypted_data.txt"
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, "w") as f:
+            f.write(serialize_bfvvector(ts.bfv_vector(context, l)))
+        return file_path
     else:
         return ValueError("No context found while using the tool list_encryption")
