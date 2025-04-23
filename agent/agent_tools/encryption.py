@@ -22,7 +22,7 @@ def list_encryption(l:list)-> str:
         file_path = "data/encrypted_data.txt"
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
         with open(file_path, "w") as f:
-            f.write(serialize_bfvvector(ts.bfv_vector(context, l)))
+            f.write(serialize_bfvvector(ts.bfv_tensor(context, l)))
         return file_path
     else:
         return ValueError("No context found while using the tool list_encryption")

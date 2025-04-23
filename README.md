@@ -27,31 +27,125 @@ In this system:
 
 ---
 
-## 🩺 Example Use Case
+## 🛠️ Technical Architecture
 
-> **You say:** "Can you check if my heart rate has been stable in the last 5 days?"
+### Components
 
-Behind the scenes:
-1. Your heart rate readings are encrypted.
-2. The encrypted vector is sent to the **MCP server**.
-3. The server computes average and trend analysis **on the encrypted data**.
-4. It sends back an encrypted result.
-5. The agent decrypts it and replies:
+1. **Agent System**
+   - Multiple agent implementations available:
+     - OpenAI-based agent (`openai_agent.py`)
+     - Ollama-based agent (`ollama_agent.py`)
+   - Uses LangChain and LangGraph for agent orchestration
+   - Supports both synchronous and asynchronous operations
 
-> *"Your average heart rate is 87 bpm, and it appears stable over the past 5 days."*
+2. **Encryption Layer**
+   - Uses TenSEAL for homomorphic encryption
+   - BFV scheme implementation for integer operations
+   - Secure context management with serialization support
+   - Tools for encryption/decryption operations
+
+3. **MCP Server**
+   - FastMCP implementation for secure computations
+   - Supports Server-Sent Events (SSE) transport
+   - Handles encrypted vector operations
+   - Movie recommendation system as a demo use case
+
+4. **Data Management**
+   - Mock data generation for testing
+   - Secure serialization/deserialization of encrypted vectors
+   - File-based storage for encrypted data and results
+
+---
+
+## 🚀 Setup and Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd PrivRec
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Environment Setup**
+   Create a `.env` file with:
+   ```
+   MCP_SERVER_PORT=<your-port>
+   MCP_SERVER_LOG_LEVEL=INFO
+   ```
+
+4. **Initialize the Context**
+   The system will automatically initialize the encryption context on first run.
+
+---
+
+## 🔧 Core Components
+
+### Encryption Tools
+```python
+# Example of encrypting data
+@tool
+def list_encryption(l:list)-> str:
+    context = get_context()
+    return serialize_bfvvector(ts.bfv_tensor(context, l))
+```
+
+### MCP Server Operations
+```python
+# Example of secure computation
+@mcp.tool()
+def match_movies() -> str:
+    # Performs computations on encrypted vectors
+    # Returns encrypted similarity scores
+```
+
+### Agent Tools
+- `encryption.py`: Handles data encryption
+- `decryption.py`: Manages secure decryption
+- `decrypt_interest_results.py`: Processes encrypted analysis results
+
+---
+
+## 🩺 Example Use Cases
+
+1. **Health Data Analysis**
+   - Secure heart rate trend analysis
+   - Privacy-preserving vital signs monitoring
+   - Encrypted health metrics comparison
+
+2. **Recommendation System**
+   - Encrypted user interest vectors
+   - Secure movie matching
+   - Privacy-preserving similarity scoring
 
 ---
 
 ## 🔐 Key Features
 
 - ✅ **On-device agent with LLM reasoning**
-- ✅ **Encryption and decryption using homomorphic encryption (CKKS via TenSEAL)**
+- ✅ **Encryption and decryption using homomorphic encryption (BFV via TenSEAL)**
 - ✅ **MCP server that performs computations without access to raw data**
 - ✅ **Streamlit-based user interface**
 - ✅ **Privacy-preserving by design**
+- ✅ **Multiple LLM backend support (OpenAI, Ollama)**
+- ✅ **Asynchronous operation support**
+- ✅ **Modular and extensible architecture**
 
 ---
 
 ## 🌐 Vision
 
 This prototype is a step toward building **confidential AI systems**, where sensitive data can be intelligently analyzed without ever being exposed. The collaboration between on-device agents and an encrypted computation server (**MCP**) shows how we can move toward **trustless, privacy-first AI architectures** in healthcare and beyond.
+
+---
+
+## 📝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

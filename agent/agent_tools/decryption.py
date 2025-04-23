@@ -22,4 +22,4 @@ def list_decryption(file_path : str)->list:
     context = get_context()
     el = read_file(file_path)
     el = deserialize_bfvvector(el, context)
-    return el.decrypt()
+    return el.decrypt().tolist()

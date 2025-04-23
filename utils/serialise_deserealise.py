@@ -9,4 +9,4 @@ def serialize_bfvvector(bfv_vector: ts.BFVVector) -> str:
 
 def deserialize_bfvvector(encoded_string: str, context: ts.Context) -> ts.BFVVector:
     serialized_bytes = base64.b64decode(encoded_string.encode("utf-8"))
-    return ts.bfv_vector_from(context, serialized_bytes)
+    return ts.bfv_tensor_from(context, serialized_bytes)
