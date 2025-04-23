@@ -144,19 +144,9 @@ The movie preference matching use case is a working demonstration of how **priva
 6. **Optional: Rank and display results**  
    The agent can sort the scores and show the top movie recommendations based on similarity, all while ensuring the user's input and preferences were never visible to the server.
 
----
+<img width="1026" alt="Terminal" src="https://github.com/user-attachments/assets/72fe8e53-fed7-4515-be19-774887a3a899" />
 
-### 🔍 Functional Highlights
 
-| Functionality         | Description                                                                 |
-|-----------------------|-----------------------------------------------------------------------------|
-| **User Vector Input** | Accepts numeric input representing interest in different genres             |
-| **Encryption**        | Uses TenSEAL (BFV scheme) to homomorphically encrypt the input vector       |
-| **Secure Compute**    | Server performs similarity scoring without decrypting the input             |
-| **Homomorphic Dot Product** | Used for similarity calculation, works on encrypted data            |
-| **Encrypted Output**  | Results are stored encrypted and are never visible on the server            |
-| **Decryption**        | Performed only on the agent side using matching context and keys            |
-| **Results Handling**  | Can rank and recommend top movies based on similarity scores                |
 
 ---
 
@@ -166,12 +156,6 @@ The movie preference matching use case is a working demonstration of how **priva
 - ✅ **Agent Agnostic**: Works with both on-device and cloud-based LLM agents  
 - ✅ **Extendable**: Can support more complex user profiles or additional domains (like music, shopping, healthcare)  
 - ✅ **Educational**: Demonstrates how homomorphic encryption works in a practical context  
-
----
-
-## 🪪 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
