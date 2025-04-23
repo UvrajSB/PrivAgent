@@ -4,6 +4,9 @@
 
 Through a conversational agent interface, user data is encrypted on the device, sent to a secure processing unit (MCP), and the results are returned in encrypted form to be decrypted locally. This creates a secure and intelligent system for sensitive environments such as healthcare, personalization, and finance.
 
+![PET enabled MCP server](https://github.com/user-attachments/assets/1c8f39ea-809a-4bf7-95c0-c359cfaa9bf2)
+
+
 ---
 
 ## 🔐 Why PrivAgents
