@@ -1,6 +1,6 @@
-# PrivAgents: Privacy-Enhancing Agents with Encrypted Computation
+# PrivAgents: Agents with PETT (Privacy Enhancement Techniques Toolkit)
 
-**PrivAgents** is a privacy-first framework that showcases how autonomous agents, both on-device and in the cloud, can perform secure data processing while ensuring complete confidentiality. It leverages **Privacy-Enhancing Technologies (PETs)** herein **Homomorphic Encryption (HE)** to compute on encrypted data without ever accessing raw information.
+**PrivAgents** is a privacy-first framework that showcases how autonomous agents, both on-device and in the cloud, can perform secure data processing through trustless MCP servers while ensuring complete confidentiality. It leverages **Privacy-Enhancing Technologies (PETs)** herein **Homomorphic Encryption (HE)** to compute on encrypted data without ever accessing raw information.
 
 Through a conversational agent interface, user data is encrypted on the device, sent to a secure processing unit (MCP), and the results are returned in encrypted form to be decrypted locally. This creates a secure and intelligent system for sensitive environments such as healthcare, personalization, and finance.
 
